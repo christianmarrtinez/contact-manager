@@ -67,7 +67,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ContactViewHolder>
     public void setContacts(ArrayList<Contacts> contacts) {
         this.contacts = contacts;
 
-        
+
         notifyDataSetChanged();
     }
 
