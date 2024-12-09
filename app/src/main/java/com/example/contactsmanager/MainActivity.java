@@ -22,7 +22,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     //Data Source
     private ContactDatabase contactDatabase;
-    private ArrayList<Contacts> contacts = new ArrayList<>();
+    private ArrayList<Contacts> contactsArrayList = new ArrayList<>();
 
     //Adapter
     private MyAdapter myAdapter;
@@ -57,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        //Adapter
-        myAdapter = new MyAdapter(contacts);
+
 
         //Database:
         contactDatabase = ContactDatabase.getInstance(this);
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 .get(MyViewModel.class);
 
         //Inserting a new Contact
-        Contacts c1 = new Contacts(1,"Jack","jack@gmail.com");
+        Contacts c1 = new Contacts("Jack","jack@gmail.com");
         viewModel.addNewContact(c1);
 
 
@@ -80,13 +79,17 @@ public class MainActivity extends AppCompatActivity {
 
                         for (Contacts c: contacts){
                             Log.v("TAGY", c.getName());
+                            contactsArrayList.add(c);
                         }
 
+                        myAdapter.notifyDataSetChanged();
 
                     }
                 });
 
 
+        //Adapter
+        myAdapter = new MyAdapter(contactsArrayList);
 
         //Linking the RecyclerView with the Adapter
         recyclerView.setAdapter(myAdapter);
