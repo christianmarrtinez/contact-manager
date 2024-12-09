@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onChanged(List<Contacts> contacts) {
 
+                        contactsArrayList.clear();
+
                         for (Contacts c: contacts){
                             Log.v("TAGY", c.getName());
                             contactsArrayList.add(c);
