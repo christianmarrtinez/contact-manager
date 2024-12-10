@@ -7,8 +7,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.databinding.DataBindingUtil;
+
+import com.example.contactsmanager.databinding.ActivityAddNewContactActivtyBinding;
 
 public class AddNewContactActivty extends AppCompatActivity {
+
+
+    private ActivityAddNewContactActivtyBinding binding;
+    private AddNewContactClickHandler handler;
+    private Contacts contacts;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +29,24 @@ public class AddNewContactActivty extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        contacts = new Contacts();
+
+        binding = DataBindingUtil.setContentView(
+                this,
+                R.layout.activity_add_new_contact_activty
+        );
+
+
+        handler = new AddNewContactClickHandler(
+                contacts,
+                this
+
+        );
+
+        binding.setContact(contacts);
+        binding.setClickHandler(handler);
+
+
     }
 }

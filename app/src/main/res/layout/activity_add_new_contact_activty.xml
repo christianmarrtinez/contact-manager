@@ -10,8 +10,8 @@
             name="contact"
             type="com.example.contactsmanager.Contacts" />
         <variable
-            name=""
-            type="" />
+            name="clickHandler"
+            type="com.example.contactsmanager.AddNewContactClickHandler" />
     </data>
 
 
@@ -23,6 +23,7 @@
         tools:context=".AddNewContactActivty">
 
         <EditText
+            android:text="@={contact.name}"
             android:id="@+id/editText"
             android:layout_width="0dp"
             android:textColor="@color/white"
@@ -39,6 +40,7 @@
             app:layout_constraintVertical_chainStyle="packed" />
 
         <EditText
+            android:text="@={contact.email}"
             android:id="@+id/emailEDT"
             android:layout_width="0dp"
             android:textColor="@color/white"
@@ -52,6 +54,7 @@
 
 
         <Button
+            android:onClick="@{clickHandler::onSubmitBtnClicked}"
             android:id="@+id/submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
