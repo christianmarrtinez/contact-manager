@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mainBinding;
     private MainActivityClickHandlers handlers;
 
+    // View model
+    MyViewModel viewModel;
+
 
 
 
@@ -65,12 +68,12 @@ public class MainActivity extends AppCompatActivity {
         contactDatabase = ContactDatabase.getInstance(this);
 
         //View Model:
-        MyViewModel viewModel = new ViewModelProvider(this)
+        viewModel = new ViewModelProvider(this)
                 .get(MyViewModel.class);
 
         //Inserting a new Contact
-        Contacts c1 = new Contacts("Jack","jack@gmail.com");
-        viewModel.addNewContact(c1);
+     //   Contacts c1 = new Contacts("Jack","jack@gmail.com");
+      //  viewModel.addNewContact(c1);
 
 
         //Loading the Data from ROOM DB
@@ -82,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                         contactsArrayList.clear();
 
                         for (Contacts c: contacts){
-                            Log.v("TAGY", c.getName());
+                          //  Log.v("TAGY", c.getName());
                             contactsArrayList.add(c);
                         }
 
